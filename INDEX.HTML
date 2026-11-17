@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Isaac Rono | GIS Professional Portfolio</title>
+
+<style>
+
+/* GENERAL SETTINGS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    color: #333;
+    line-height: 1.7;
+    transition: 0.3s;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(120deg, #001f5b, #087f8c);
+    color: white;
+    text-align: center;
+    padding: 75px 20px;
+}
+
+header h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+header p {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: #101820;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    color: #00d4ff;
+}
+
+/* MENU BUTTON */
+
+.menu-btn {
+    display: none;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* SECTION SETTINGS */
+
+section {
+    padding: 85px 10%;
+    margin-bottom: 25px;
+    min-height: 250px;
+}
+
+section h2 {
+    color: #003366;
+    margin-bottom: 35px;
+    text-align: center;
+    font-size: 30px;
+}
+
+section p {
+    margin-bottom: 20px;
+    font-size: 17px;
+}
+
+/* HOME */
+
+#home {
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#home p {
+    font-size: 18px;
+}
+
+.btn {
+    display: inline-block;
+    background: #007b83;
+    color: white;
+    padding: 13px 28px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background: #004d55;
+}
+
+/* ABOUT */
+
+#about h3 {
+    color: #007b83;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 23px;
+}
+
+/* SERVICES AND PROJECTS */
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 28px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card h3 {
+    color: #007b83;
+    margin-bottom: 15px;
+}
+
+/* CONTACT */
+
+#contact {
+    text-align: center;
+}
+
+#contact a {
+    color: #007b83;
+    font-weight: bold;
+}
+
+form {
+    max-width: 550px;
+    margin: auto;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+form button {
+    background: #007b83;
+    color: white;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #004d55;
+}
+
+/* FOOTER */
+
+footer {
+    background: #001f5b;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+/* DARK MODE */
+
+body.dark {
+    background: #121212;
+    color: white;
+}
+
+body.dark section h2 {
+    color: #00d4ff;
+}
+
+body.dark .card {
+    background: #252525;
+    color: white;
+}
+
+body.dark input,
+body.dark textarea {
+    background: #252525;
+    color: white;
+    border-color: #555;
+}
+
+body.dark #about h3 {
+    color: #00d4ff;
+}
+
+/* BACK TO TOP */
+
+#topBtn {
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #007b83;
+    color: white;
+    border: none;
+    padding: 12px 17px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 700px) {
+
+    nav {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 18px;
+        padding: 20px;
+    }
+
+    nav .nav-links.show {
+        display: flex;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    section {
+        padding: 55px 6%;
+        margin-bottom: 15px;
+    }
+
+    #home {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <h1>Isaac Rono (Rashid)</h1>
+
+    <p>GIS | Remote Sensing | Mapping | Surveying</p>
+
+    <p>Welcome to My GIS Professional Portfolio</p>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        ☰
+    </button>
+
+    <div class="nav-links" id="navLinks">
+
+        <a href="#home">Home</a>
+
+        <a href="#about">About</a>
+
+        <a href="#services">Services</a>
+
+        <a href="#projects">Projects</a>
+
+        <a href="#contact">Contact</a>
+
+    </div>
+
+    <button onclick="toggleDarkMode()"
+    style="background:none;color:white;border:none;font-size:20px;cursor:pointer;"
+    aria-label="Toggle dark mode">
+
+        🌙
+
+    </button>
+
+</nav>
+
+
+<!-- HOME SECTION -->
+
+<section id="home">
+
+    <h2>Welcome to My Website</h2>
+
+    <p>
+        I am Isaac Rono (Rashid), a GIS enthusiast
+        interested in Geographic Information Systems,
+        spatial analysis, remote sensing and land surveying.
+    </p>
+
+    <p>
+        Explore my professional profile, GIS services
+        and geospatial projects.
+    </p>
+
+    <a href="#about" class="btn">
+        Explore My Website
+    </a>
+
+</section>
+
+
+<!-- ABOUT SECTION -->
+
+<section id="about">
+
+    <h2>About Me</h2>
+
+    <h3>Isaac Rono (Rashid)</h3>
+
+    <p>
+        I am a Geospatial Information Science student
+        with an interest in GIS technology, mapping,
+        spatial data management, surveying and geographical
+        data visualization.
+    </p>
+
+    <p>
+        I have an interest in using QGIS, ArcGIS,
+        Remote Sensing and geospatial technologies
+        to solve real-world problems.
+    </p>
+
+    <p>
+        My professional goal is to apply geospatial
+        technologies in land management, environmental
+        planning, infrastructure development and
+        decision-making.
+    </p>
+
+</section>
+
+
+<!-- SERVICES SECTION -->
+
+<section id="services">
+
+    <h2>My GIS Services</h2>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h3>GIS Mapping</h3>
+
+            <p>
+                Creation of thematic maps using
+                QGIS and ArcGIS.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Spatial Analysis</h3>
+
+            <p>
+                Spatial modelling, overlay analysis
+                and accessibility analysis.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Remote Sensing</h3>
+
+            <p>
+                Satellite image processing, NDVI
+                and land cover classification.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Land Surveying</h3>
+
+            <p>
+                Land subdivision, mapping and
+                geospatial data collection.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS SECTION -->
+
+<section id="projects">
+
+    <h2>My GIS Projects</h2>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h3>Flood Hazard Mapping</h3>
+
+            <p>
+                GIS-based flood hazard identification
+                and spatial analysis.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Health Facility Mapping</h3>
+
+            <p>
+                Mapping health facilities and
+                analysing geographical accessibility.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Land Use Mapping</h3>
+
+            <p>
+                Land use and land cover classification
+                using satellite imagery.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Crime Analysis</h3>
+
+            <p>
+                Geospatial analysis of crime
+                distribution and spatial patterns.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT SECTION -->
+
+<section id="contact">
+
+    <h2>Contact Me</h2>
+
+    <h3>Isaac Rono (Rashid)</h3>
+
+    <p>
+        GIS | Remote Sensing | Mapping | Surveying
+    </p>
+
+    <p>
+        Email:
+        <a href="mailto:rashidrono04@gmail.com">
+            rashidrono04@gmail.com
+        </a>
+    </p>
+
+    <form id="contactForm">
+
+        <input
+        type="text"
+        id="name"
+        placeholder="Your Name"
+        required>
+
+        <input
+        type="email"
+        id="email"
+        placeholder="Your Email"
+        required>
+
+        <textarea
+        id="message"
+        placeholder="Write your message here..."
+        rows="6"
+        required></textarea>
+
+        <button type="submit">
+            Send Message
+        </button>
+
+    </form>
+
+    <p id="formMessage"
+    style="text-align:center;margin-top:20px;">
+    </p>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        Copyright © <span id="year"></span>
+        Isaac Rono (Rashid)
+    </p>
+
+    <p>
+        GIS Professional Portfolio
+    </p>
+
+    <p>
+        Designed using HTML, CSS and JavaScript
+    </p>
+
+</footer>
+
+
+<!-- BACK TO TOP BUTTON -->
+
+<button id="topBtn" onclick="goToTop()"
+aria-label="Back to top">
+
+    ↑
+
+</button>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* 1. MOBILE NAVIGATION */
+
+function toggleMenu() {
+
+    document.getElementById("navLinks")
+    .classList.toggle("show");
+
+}
+
+
+/* 2. DARK MODE */
+
+function toggleDarkMode() {
+
+    document.body.classList.toggle("dark");
+
+}
+
+
+/* 3. AUTOMATIC CURRENT YEAR */
+
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+
+/* 4. BACK TO TOP BUTTON */
+
+window.onscroll = function() {
+
+    let button = document.getElementById("topBtn");
+
+    if (document.documentElement.scrollTop > 300) {
+
+        button.style.display = "block";
+
+    } else {
+
+        button.style.display = "none";
+
+    }
+
+    updateActiveLink();
+
+};
+
+
+/* 5. SCROLL TO TOP */
+
+function goToTop() {
+
+    window.scrollTo({
+
+        top: 0,
+        behavior: "smooth"
+
+    });
+
+}
+
+
+/* 6. CLOSE MOBILE MENU AFTER CLICKING A LINK */
+
+document.querySelectorAll(".nav-links a")
+.forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        document.getElementById("navLinks")
+        .classList.remove("show");
+
+    });
+
+});
+
+
+/* 7. ACTIVE NAVIGATION LINK */
+
+function updateActiveLink() {
+
+    let sections = document.querySelectorAll("section");
+
+    let links = document.querySelectorAll(".nav-links a");
+
+    let current = "";
+
+    sections.forEach(function(section) {
+
+        let top = section.offsetTop - 150;
+
+        if (window.scrollY >= top) {
+
+            current = section.getAttribute("id");
+
+        }
+
+    });
+
+    links.forEach(function(link) {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+}
+
+
+/* 8. CONTACT FORM EMAIL SUBMISSION */
+
+document.getElementById("contactForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+
+    let email = document.getElementById("email").value.trim();
+
+    let message = document.getElementById("message").value.trim();
+
+    if (name === "" || email === "" || message === "") {
+
+        alert("Please fill in all fields.");
+
+        return;
+
+    }
+
+    let subject = encodeURIComponent(
+        "Website Message from " + name
+    );
+
+    let body = encodeURIComponent(
+        "Name: " + name +
+        "\nEmail: " + email +
+        "\n\nMessage:\n" + message
+    );
+
+    let mailtoLink =
+    "mailto:rashidrono04@gmail.com" +
+    "?subject=" + subject +
+    "&body=" + body;
+
+    window.location.href = mailtoLink;
+
+});
+
+</script>
+
+</body>
+
+</html>
